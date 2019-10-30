@@ -57,6 +57,14 @@ class CalendarAdapter(
         val dayList = ArrayList<String>()
         dayList.addAll(dayNamesList)
 
+        val calendarViewStartingDay = Calendar.getInstance(Locale.getDefault()).firstDayOfWeek
+
+        if (calendarViewStartingDay == Calendar.MONDAY) {
+            val firstDay = dayList[0]
+            dayList.removeAt(0)
+            dayList.add(dayList.size, firstDay)
+        }
+
         // Blank positions
             // See definition, but it's received from 1..7
         val firstDayPosition = calendar.get(Calendar.DAY_OF_WEEK) - 2
@@ -75,7 +83,7 @@ class CalendarAdapter(
     }
 
     private fun createWeekDays(): List<String> {
-        val symbols = DateFormatSymbols(Locale.getDefault())
+        val symbols = DateFormatSymbols()
         return symbols.shortWeekdays.filter { it.isNotEmpty() }.toList()
     }
 
