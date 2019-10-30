@@ -25,6 +25,7 @@ class CalendarAdapter(
         notifyDataSetChanged()
     }
 
+    // TODO :: possible WeekViewHolder with another ViewPagerAdapter2??
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_calendar_month, parent, false)
         return MonthViewHolder(view)
