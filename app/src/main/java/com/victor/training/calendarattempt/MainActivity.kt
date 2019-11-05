@@ -7,6 +7,7 @@ import com.victor.training.calendarattempt.adapters.CalendarAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private var collapsed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +22,15 @@ class MainActivity : AppCompatActivity() {
         view_pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-
+                println("victor - month passed")
             }
         })
+
+
+        button.setOnClickListener {
+            collapsed = !collapsed
+            monthAdapter.collapseCalendar(collapsed)
+        }
     }
 
 }
